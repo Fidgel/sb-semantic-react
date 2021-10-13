@@ -12,6 +12,8 @@ npx sb init
 If you receive error while doing ```npm start```
 Create .env file in root dependency 
 
-Add: ```SKIP_PREFLIGHT_CHECK=true``` to .env file
-Save, do ```npm start```
-Open new Terminal Tab: ```npm run storybook```
+Add: ```SKIP_PREFLIGHT_CHECK=true``` to .env file and Save
+
+do ```npm start``` to run React Project
+
+Open a new Terminal Tab: ```npm run storybook```
