@@ -10,7 +10,7 @@ npm install semantic-ui-react semantic-ui-css
 npx sb init
 ```
 If you receive error while doing ```npm start```
-Create .env file in root dependency 
+Create a .env file in the root dependency 
 
 Add: ```SKIP_PREFLIGHT_CHECK=true``` to .env file and Save
 
