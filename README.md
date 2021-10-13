@@ -17,3 +17,5 @@ Add: ```SKIP_PREFLIGHT_CHECK=true``` to .env file and Save
 do ```npm start``` to run React Project
 
 Open a new Terminal Tab: ```npm run storybook```
+
+https://react.semantic-ui.com/usage
