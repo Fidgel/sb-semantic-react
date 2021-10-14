@@ -1,16 +1,19 @@
 import React from 'react';
-import { SemanticCard } from './SemanticCard';
+import { Demo } from './SemanticCard';
 
 export default {
-    title: 'SemanticCard',
-    component: SemanticCard,
+    title: 'Demo',
+    component: Demo,
 }
 
 
-const Template = (args) => <SemanticCard {...args} />;
+const Template = (args) => <Demo {...args} />;
 
-export const Demo = Template.bind({});
+export const SemanticCard = Template.bind({});
 
-Demo.args = {
+SemanticCard.args = {
     primary: true
 };
+
+
+
