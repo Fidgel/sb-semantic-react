@@ -1,26 +1,30 @@
 import React, {useEffect, useState} from 'react';
-import {Button, ButtonContent, Card, CardContent, CardHeader, CardMeta, CardDescription, Icon, Image } from 'semantic-ui-react' 
+import {Card, CardContent, CardHeader, CardMeta, CardDescription, Image } from 'semantic-ui-react' 
 import PropTypes from 'prop-types';
-import DaveImg from '../images/Dave.jpeg';
 import axios from 'axios';
 
-export const Demo = ({Title}) => {
+export const Demo = (props) => {
 
     const [title, setState] = useState([]);
-
+    const [overview, setOverview] = useState([]);
+    const [release_date, setRelease] = useState([]);
+    const [poster_path, setPoster] = useState([])
 
     useEffect(() => {
-        fetchData();
+        /* fetchData(); */
     }, []);
 
     
     
     const fetchData = (index) => {
-        axios.get('http://localhost:3000/cards')
+        axios.get('https://api.themoviedb.org/3/movie/550?api_key=0d81b1a4f4007b1880fb5b55f99645fd')
         .then((response) => {
             console.log(response)
             const myCard = response.data;
-            setState(response.data[index].title);
+            setState(response.data.title);
+            setOverview(response.data.overview);
+            setRelease(response.data.release_date);
+            setPoster(response.data.poster_path)
         })
         .catch(error => console.log({error}))
     }; 
@@ -28,30 +32,17 @@ export const Demo = ({Title}) => {
     return (
     <div> 
     <Card>
-    <Image src={DaveImg} wrapped ui={false} />
+    <Image src={"https://image.tmdb.org/t/p/w342" + props.poster_path} wrapped ui={false} />
     <CardContent>
-      <CardHeader>{title}</CardHeader>
+      <CardHeader>{props.title}</CardHeader>
       <CardMeta>
-        <span className='date'>Joined in 2021</span>
+        <span className='date'>Release Date: {props.release_date}</span>
       </CardMeta>
       <CardDescription>
-        Dave is a Dog enthusiast.
-        <div>"Who needs friends, when you have a dog!"</div>
+        {props.overview}
       </CardDescription>
     </CardContent>
-    <div>
-    <Button animated onClick  = {() => fetchData(2)}>
-      <ButtonContent visible>Add friend</ButtonContent>
-      <ButtonContent hidden>
-        <Icon name='arrow right' />
-      </ButtonContent>
-    </Button>
-    </div>
     <CardContent extra>
-      <a>
-        <Icon name='user' />
-        2 Friends
-      </a>
     </CardContent>
   </Card>
   </div>
@@ -66,7 +57,7 @@ styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css
 document.head.appendChild(styleLink);
 
 Demo.propTypes = {
-    primary: PropTypes.bool,
+    label: PropTypes.string
 }
 
 

@@ -7,12 +7,13 @@ export default {
 }
 
 
+
 const Template = (args) => <Demo {...args} />;
 
 export const SemanticCard = Template.bind({});
 
 SemanticCard.args = {
-    primary: true
+    label: ""
 };
 
 
